@@ -1,0 +1,10 @@
+MANIFEST.in
+lava-group
+setup.py
+etc/lava-group.init
+lava_group.egg-info/PKG-INFO
+lava_group.egg-info/SOURCES.txt
+lava_group.egg-info/dependency_links.txt
+lava_group.egg-info/not-zip-safe
+lava_group.egg-info/requires.txt
+lava_group.egg-info/top_level.txt
