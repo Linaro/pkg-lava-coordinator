@@ -23,14 +23,15 @@ export DH_OPTIONS
 
 override_dh_auto_install:
 	dh_auto_install
-	python setup.py install --root=$(CURDIR)/debian/lava-dispatcher/ --install-layout=deb
+	python setup.py install --root=$(CURDIR)/debian/lava-group/ --install-layout=deb
 	$(XP) $(DB2MAN) debian/manpage.xml
 	dh_installman lava-group.1
+	mv debian/lava-group/etc/init.d/lava-group.init debian/lava-group.init
 
 override_dh_auto_clean:
 	dh_auto_clean
 	$(RM) -r lava_group.egg-info setup.cfg
-	$(RM) -r build/ lava-group.1 debian/lava-group.1
+	$(RM) -r build/ lava-group.1 debian/lava-group.1 debian/lava-group.init
 
 # get upstream version for get-orig-source target
 VERSION:= $(shell dpkg-parsechangelog | grep '^Version: ' | sed -e 's/^Version: //' | sed -e 's/\-.*$$//')
