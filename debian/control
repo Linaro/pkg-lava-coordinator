@@ -1,4 +1,4 @@
-Source: lava-group
+Source: lava-coordinator
 Section: net
 Priority: optional
 Maintainer: Neil Williams <codehelp@debian.org>
@@ -11,10 +11,10 @@ Homepage: http://www.linaro.org/engineering/validation
 #Vcs-Git: git://git.debian.org/collab-maint/lava-group.git
 #Vcs-Browser: http://git.debian.org/?p=collab-maint/lava-group.git;a=summary
 
-Package: lava-group
+Package: lava-coordinator
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}
-Description: LAVA GroupDispatcher daemon
- This package provides lava group-dispatcher to coordinate
+Description: LAVA Coordinator daemon
+ This package provides lava coordinator to coordinate
  communication between MultiNode LAVA jobs on 
  configured devices.

@@ -1,5 +1,5 @@
-lava-group (0.32.3-1) unstable; urgency=low
+lava-coordinator (0.0.1-1) unstable; urgency=low
 
-  * Initial packaging of the singleton GroupDispatcher
+  * Initial packaging of the singleton LAVA Coordinator
 
  -- Neil Williams <codehelp@debian.org>  Mon, 22 Jul 2013 16:21:30 +0100
