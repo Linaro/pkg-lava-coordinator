@@ -1,3 +1,10 @@
+lava-coordinator (0.0.2-1) unstable; urgency=low
+
+  * Fix handling of clearGroupData
+  * Fix init script to use exec as name is limited to 15 characters.
+
+ -- Neil Williams <codehelp@debian.org>  Wed, 24 Jul 2013 13:52:56 +0100
+
 lava-coordinator (0.0.1-1) unstable; urgency=low
 
   * Initial packaging of the singleton LAVA Coordinator
