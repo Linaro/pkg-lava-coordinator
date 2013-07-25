@@ -1,3 +1,9 @@
+lava-coordinator (0.0.3-1) unstable; urgency=low
+
+  * Add initial handling for aggregating test result bundles.
+
+ -- Neil Williams <codehelp@debian.org>  Thu, 25 Jul 2013 16:06:43 +0100
+
 lava-coordinator (0.0.2-1) unstable; urgency=low
 
   * Fix handling of clearGroupData

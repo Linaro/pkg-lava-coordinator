@@ -41,6 +41,7 @@ class LavaCoordinator(object):
     # all_groups dict with a new group looked up each time.
     group = None
     conn = None
+    bundles = {}
 
     def __init__(self, json_data):
         """
@@ -216,6 +217,33 @@ class LavaCoordinator(object):
         self.conn.send(json.dumps({"response": "wait"}))
         self.conn.close()
 
+    def _aggregateBundle(self, json_data, client_name):
+        """ *All* nodes must call aggregate, even if there is no bundle
+        to submit from this board.
+        :param json_data: the request header and the bundle itself
+        :param client_name: the board identifier in the group data
+        """
+        if "bundle" not in json_data:
+            logging.debug("Aggregate called without a bundle in the JSON")
+            self._badRequest()
+            return
+        if "sub_id" not in json_data or json_data["subid"] is None:
+            logging.debug("Aggregation called without a valid sub_id in the JSON")
+            self._badRequest()
+            return
+        self.bundles[client_name] = json_data["bundle"]
+        if json_data["sub_id"].endswith(".0"):
+            if len(self.bundles) < self.group['count']:
+                logging.info("Waiting for the rest of the group to complete the job.")
+                self._waitResponse()
+            else:
+                logging.debug("Sending bundle list to sub_id zero")
+                msg = {"response": "ack", "message": {"bundle": self.bundles}}
+                self.conn.send(json.dumps(msg))
+                self.conn.close()
+        else:
+            self._ackResponse()
+
     def lavaSync(self, json_data, client_name):
         """
         Global synchronization primitive. Sends a message and waits for the same
@@ -339,6 +367,8 @@ class LavaCoordinator(object):
             self._setGroupData(json_data)
         elif request == "clear_group":
             self._clearGroupData(json_data)
+        elif request == "aggregate":
+            self._aggregateBundle(json_data, client_name)
         elif request == "lava_sync":
             logging.debug("lava_sync: %s request made by '%s' in group '%s'" %
                           (json.dumps(json_data), client_name, self.group['group']))
