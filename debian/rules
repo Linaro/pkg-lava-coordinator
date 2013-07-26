@@ -25,13 +25,13 @@ override_dh_auto_install:
 	dh_auto_install
 	python setup.py install --root=$(CURDIR)/debian/lava-coordinator/ --install-layout=deb
 	$(XP) $(DB2MAN) debian/manpage.xml
-	dh_installman lava-coordinator.1
+	dh_installman lava-coordinator.8
 	mv debian/lava-coordinator/etc/init.d/lava-coordinator.init debian/lava-coordinator.init
 
 override_dh_auto_clean:
 	dh_auto_clean
 	$(RM) -r lava_coordinator.egg-info setup.cfg
-	$(RM) -r build/ lava-coordinator.1 debian/lava-coordinator.1 debian/lava-coordinator.init
+	$(RM) -r build/ lava-coordinator.8 debian/lava-coordinator.8 debian/lava-coordinator.init
 
 # get upstream version for get-orig-source target
 VERSION:= $(shell dpkg-parsechangelog | grep '^Version: ' | sed -e 's/^Version: //' | sed -e 's/\-.*$$//')

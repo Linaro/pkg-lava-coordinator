@@ -1,3 +1,10 @@
+lava-coordinator (0.1.0-1) unstable; urgency=low
+
+  * Implement length-prefixed protocol for longer message support.
+  * Extend manpage
+
+ -- Neil Williams <codehelp@debian.org>  Fri, 26 Jul 2013 16:43:31 +0100
+
 lava-coordinator (0.0.3-1) unstable; urgency=low
 
   * Add initial handling for aggregating test result bundles.
