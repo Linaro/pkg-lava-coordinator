@@ -227,7 +227,7 @@ class LavaCoordinator(object):
             logging.debug("Aggregate called without a bundle in the JSON")
             self._badRequest()
             return
-        if "sub_id" not in json_data or json_data["subid"] is None:
+        if "sub_id" not in json_data or json_data["sub_id"] is None:
             logging.debug("Aggregation called without a valid sub_id in the JSON")
             self._badRequest()
             return
@@ -242,6 +242,7 @@ class LavaCoordinator(object):
                 self.conn.send(json.dumps(msg))
                 self.conn.close()
         else:
+            logging.debug("not sub_id zero")
             self._ackResponse()
 
     def lavaSync(self, json_data, client_name):
@@ -368,6 +369,7 @@ class LavaCoordinator(object):
         elif request == "clear_group":
             self._clearGroupData(json_data)
         elif request == "aggregate":
+            logging.debug("Aggregate called")
             self._aggregateBundle(json_data, client_name)
         elif request == "lava_sync":
             logging.debug("lava_sync: %s request made by '%s' in group '%s'" %
@@ -400,9 +402,9 @@ def signal_handler(signal, frame):
         raise Exception('Error in signal handler: ' + str(e))
 
 
-def getDaemonLogger(filePath, log_format=None):
+def getDaemonLogger(filePath, log_format=None, loglevel=logging.INFO):
     logger = logging.getLogger()
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(loglevel)
     try:
         watchedHandler = WatchedFileHandler(filePath)
     except Exception as e:
@@ -455,14 +457,21 @@ if __name__ == '__main__':
         else:
             print "No such directory for specified logfile '%s'" % logfile
     open(logfile, 'w').close()
-    client_logger, watched_file_handler = getDaemonLogger(logfile)
+    level = logging.INFO
+    if options.loglevel == "DEBUG":
+        level = logging.DEBUG
+    if options.loglevel == "WARNING":
+        level = logging.WARNING
+    if options.loglevel == "ERROR":
+        level == logging.ERROR
+    client_logger, watched_file_handler = getDaemonLogger(logfile, loglevel=level)
     if isinstance(client_logger, Exception):
         print("Fatal error creating client_logger: " + str(client_logger))
         sys.exit(os.EX_OSERR)
     # noinspection PyArgumentList
     lockfile = daemon.pidlockfile.PIDLockFile(pidfile)
     if lockfile.is_locked():
-        logging.debug("PIDFile %s already locked" % pidfile)
+        logging.error("PIDFile %s already locked" % pidfile)
         sys.exit(os.EX_OSERR)
     context = daemon.DaemonContext(
         working_directory=os.getcwd(),
@@ -475,5 +484,5 @@ if __name__ == '__main__':
                "port": settings['port'],
                "blocksize": settings['blocksize']}
     with context:
-        logging.debug("I: Running LAVA Coordinator %s %d." % (logfile, settings['port']))
+        logging.info("Running LAVA Coordinator %s %d." % (logfile, settings['port']))
         LavaCoordinator(starter).run()
