@@ -1,3 +1,10 @@
+lava-coordinator (0.1.2-1) unstable; urgency=low
+
+  * Allow xmlRPC to take a little time before assuming the group results
+    can be posted.
+
+ -- Neil Williams <codehelp@debian.org>  Fri, 02 Aug 2013 15:27:40 +0100
+
 lava-coordinator (0.1.1-1) unstable; urgency=low
 
   * Allow connections from other than localhost.
