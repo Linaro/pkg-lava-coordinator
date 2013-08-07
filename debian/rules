@@ -33,7 +33,7 @@ endif
 
 override_dh_auto_clean:
 	dh_auto_clean
-	$(RM) -r lava_coordinator.egg-info setup.cfg
+	$(RM) -r lava_coordinator.egg-info setup.cfg dist/ lava_coordinator.egg-info/
 	$(RM) -r build/ lava-coordinator.8 debian/lava-coordinator.8 debian/lava-coordinator.init
 
 # get upstream version for get-orig-source target
