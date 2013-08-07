@@ -23,6 +23,9 @@ export DH_OPTIONS
 
 override_dh_auto_install:
 	dh_auto_install
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	PYTHONPATH=. python tests/testpoller.py
+endif
 	python setup.py install --root=$(CURDIR)/debian/lava-coordinator/ --install-layout=deb
 	$(XP) $(DB2MAN) debian/manpage.xml
 	dh_installman lava-coordinator.8
