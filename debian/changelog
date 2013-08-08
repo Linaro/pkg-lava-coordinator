@@ -1,3 +1,10 @@
+lava-coordinator (0.1.4-1) unstable; urgency=low
+
+  * Add a full test suite, run during the build and modularise the
+    coordinator code.
+
+ -- Neil Williams <codehelp@debian.org>  Thu, 08 Aug 2013 11:36:48 +0100
+
 lava-coordinator (0.1.3-1) unstable; urgency=low
 
   * Implement separate handling for wait_all
