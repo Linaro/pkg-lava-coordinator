@@ -33,6 +33,7 @@ endif
 
 override_dh_auto_clean:
 	dh_auto_clean
+	find . -name '*.pyc' -delete
 	$(RM) -r lava_coordinator.egg-info setup.cfg dist/ lava_coordinator.egg-info/
 	$(RM) -r build/ lava-coordinator.8 debian/lava-coordinator.8 debian/lava-coordinator.init
 
