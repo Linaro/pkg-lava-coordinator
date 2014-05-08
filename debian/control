@@ -9,15 +9,20 @@ Build-Depends: debhelper (>= 8.0.0),
  python | python-all | python-dev | python-all-dev,
  python-setuptools, docbook-xsl, xsltproc
 X-Python-Version: 2.7
-Standards-Version: 3.9.4
+Standards-Version: 3.9.5
 Homepage: http://www.linaro.org/engineering/validation
-#Vcs-Git: git://git.debian.org/collab-maint/lava-group.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/lava-group.git;a=summary
+Vcs-Git: https://github.com/Linaro/pkg-lava-coordinator.git
+Vcs-Browser: https://github.com/Linaro/pkg-lava-coordinator
 
 Package: lava-coordinator
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}
 Description: LAVA Coordinator daemon
- This package provides lava coordinator to coordinate
- communication between MultiNode LAVA jobs on 
- configured devices.
+ This package provides coordinator daemon to
+ provide communication and synchronisation
+ methods for test jobs running on multiple
+ configured devices on instances of LAVA
+ (Linaro Automated Validation Architecture).
+ .
+ One coordinator daemon can support more than
+ one LAVA instance in a single lab.
