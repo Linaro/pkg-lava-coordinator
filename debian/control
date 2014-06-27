@@ -9,6 +9,7 @@ Build-Depends: debhelper (>= 8.0.0),
  python | python-all | python-dev | python-all-dev,
  python-setuptools, docbook-xsl, xsltproc
 X-Python-Version: 2.7
+XS-Testsuite: autopkgtest
 Standards-Version: 3.9.5
 Homepage: http://www.linaro.org/engineering/validation
 Vcs-Git: https://github.com/Linaro/pkg-lava-coordinator.git

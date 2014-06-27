@@ -1,3 +1,9 @@
+lava-coordinator (0.1.5-3) unstable; urgency=medium
+
+  * Add autopkgtest support.
+
+ -- Neil Williams <codehelp@debian.org>  Fri, 27 Jun 2014 17:29:06 +0100
+
 lava-coordinator (0.1.5-2) unstable; urgency=medium
 
   * Initial release. (Closes: #747351: ITP: lava-coordinator -- LAVA
