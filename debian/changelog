@@ -1,3 +1,10 @@
+lava-coordinator (0.1.6-1) experimental; urgency=medium
+
+  * New upstream release with improved logging rotation
+  * Add dh_python support
+ 
+ -- Neil Williams <codehelp@debian.org>  Sun, 22 Feb 2015 11:18:01 +0000
+
 lava-coordinator (0.1.5-3) unstable; urgency=medium
 
   * Add autopkgtest support.

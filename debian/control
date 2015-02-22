@@ -7,10 +7,10 @@ Uploaders: Antonio Terceiro <terceiro@debian.org>,
  Fathi Boudra <fabo@debian.org>, Jordi Mallach <jordi@debian.org>
 Build-Depends: debhelper (>= 8.0.0),
  python | python-all | python-dev | python-all-dev,
- python-setuptools, docbook-xsl, xsltproc
+ dh-python, python-setuptools, docbook-xsl, xsltproc
 X-Python-Version: 2.7
 XS-Testsuite: autopkgtest
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Homepage: http://www.linaro.org/engineering/validation
 Vcs-Git: https://github.com/Linaro/pkg-lava-coordinator.git
 Vcs-Browser: https://github.com/Linaro/pkg-lava-coordinator
