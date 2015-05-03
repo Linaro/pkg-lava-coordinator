@@ -1,5 +1,7 @@
 # Compulsory line, this is a version 3 file
 version=3
 
-http://releases.linaro.org/latest/components/lava/lava-coordinator_(.*).tar.gz
+# http://releases.linaro.org/latest/components/lava/lava-coordinator_(.*).tar.gz
+
+https://git.linaro.org/lava/lava-coordinator.git/tags /lava/lava-coordinator.git/log/refs/tags/(.*)
 

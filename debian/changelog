@@ -1,3 +1,10 @@
+lava-coordinator (0.1.6-2) unstable; urgency=medium
+
+  * Upload for unstable
+  * Update watch file for git tags
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 03 May 2015 08:44:20 +0100
+
 lava-coordinator (0.1.6-1) experimental; urgency=medium
 
   * New upstream release with improved logging rotation
