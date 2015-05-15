@@ -1,3 +1,9 @@
+lava-coordinator (0.1.6-2~bpo8+1) jessie-backports; urgency=medium
+
+  * Rebuild for jessie-backports.
+
+ -- Neil Williams <codehelp@debian.org>  Fri, 15 May 2015 11:57:31 +0100
+
 lava-coordinator (0.1.6-2) unstable; urgency=medium
 
   * Upload for unstable
