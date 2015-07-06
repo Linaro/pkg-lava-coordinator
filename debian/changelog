@@ -1,3 +1,11 @@
+lava-coordinator (0.1.7-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Support old and new python-lockfile API to ensure
+    trusty and jessie-backports support. (Closes: #789551)
+
+ -- Neil Williams <codehelp@debian.org>  Wed, 01 Jul 2015 17:13:54 +0100
+
 lava-coordinator (0.1.6-2~bpo8+1) jessie-backports; urgency=medium
 
   * Rebuild for jessie-backports.
