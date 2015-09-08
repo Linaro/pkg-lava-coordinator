@@ -1,3 +1,9 @@
+lava-coordinator (0.1.7-2) unstable; urgency=medium
+
+  * Add Senthil Kumaran S (stylesen) as an uploader.
+
+ -- Senthil Kumaran S (stylesen) <stylesen@gmail.com>  Tue, 08 Sep 2015 22:08:09 +0530
+
 lava-coordinator (0.1.7-1) unstable; urgency=medium
 
   * New upstream release.
