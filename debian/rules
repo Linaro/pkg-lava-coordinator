@@ -19,14 +19,14 @@ XP     = xsltproc -''-nonet -''-param man.charmap.use.subset "0"
 export DH_OPTIONS
 
 %:
-	dh $@ --with python2
+	dh $@ --with python3 --buildsystem=pybuild
 
 override_dh_auto_install:
 	dh_auto_install
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-	PYTHONPATH=. python tests/testpoller.py
+	PYTHONPATH=. python3 tests/testpoller.py
 endif
-	python setup.py install --root=$(CURDIR)/debian/lava-coordinator/ --install-layout=deb
+	python3 setup.py install --root=$(CURDIR)/debian/lava-coordinator/ --install-layout=deb
 	$(XP) $(DB2MAN) debian/manpage.xml
 	dh_installman lava-coordinator.8
 	mv debian/lava-coordinator/etc/init.d/lava-coordinator.init debian/lava-coordinator.init
@@ -41,6 +41,6 @@ override_dh_auto_clean:
 VERSION:= $(shell dpkg-parsechangelog | grep '^Version: ' | sed -e 's/^Version: //' | sed -e 's/\-.*$$//')
 
 sdist-orig:
-	python setup.py sdist
+	python3 setup.py sdist
 	mv -v dist/lava-coordinator-$(VERSION)*.tar.gz ../lava-coordinator_$(VERSION).orig.tar.gz
 	$(RM) -r versiontools-*.egg/
